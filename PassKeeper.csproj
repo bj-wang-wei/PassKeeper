@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Lock.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Key.png" />
+    <None Remove="Lock.ico" />
+    <None Remove="Db_Add.ico" />
+    <None Remove="Modify.png" />
+    <None Remove="New.png" />
+    <None Remove="NewDb.png" />
+    <None Remove="OpenDb.png" />
+    <None Remove="Delete.png" />
+    <None Remove="Exit.png" />
+    <None Remove="Save.png" />
+    <None Remove="Copy.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AdonisUI.ClassicTheme.NET5" Version="1.17.1" />
+    <PackageReference Include="AdonisUI.NET5" Version="1.17.1" />
+    <PackageReference Include="GoogleAuthenticator" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Key.png" />
+    <Resource Include="Images\Db_Add.ico" />
+    <Resource Include="Images\Db_Key.ico" />
+    <Resource Include="Images\Lock.ico" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\Exit.png" />
+    <Resource Include="Images\Modify.png" />
+    <Resource Include="Images\New.png" />
+    <Resource Include="Images\NewDb.png" />
+    <Resource Include="Images\OpenDb.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Copy.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

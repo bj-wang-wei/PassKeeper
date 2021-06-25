@@ -1,0 +1,72 @@
+﻿<adonisControls:AdonisWindow  
+        x:Class="PassKeeper.MainWindow"
+        xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PassKeeper"
+        xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+        mc:Ignorable="d"
+        Title="Double U 密码管家" Height="500" Width="800" Topmost="False" WindowStartupLocation="CenterScreen" Icon="/Images/Lock.ico" >
+    <Grid Margin="5,5,5,5">
+        <DockPanel>
+            <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
+                <ToolBar >
+                    <Button  x:Name="btNewDb" ToolTip="新建密码库" Click="BtNewDb_Click" >
+                        <Image Source="/Images/NewDb.png" Stretch="Fill" Width="32" Grid.Column="0"></Image>
+                    </Button>
+                    <Button x:Name="btOpenDb" ToolTip="打开密码库" Click="BtOpenDb_Click" >
+                        <Image Source="/Images/OpenDb.png" Stretch="Fill" Width="32" Grid.Column="0"></Image>
+                    </Button>
+                    <Button x:Name="btPass" ToolTip="设置库文件密码" IsEnabled="False" Click="BtPass_Click">
+                        <Image x:Name="imPass" Source="/Images/Key.png" Stretch="Fill" Width="32" Grid.Column="0"  Opacity="0.3" ></Image>
+                    </Button>
+                    <Separator/>
+                    <Button  x:Name="btNew" ToolTip="新建项" IsEnabled="False" Click="BtNew_Click">
+                        <Image x:Name="imNew" Source="/Images/New.png" Stretch="Fill" Width="32" Grid.Column="0" Opacity="0.3"></Image>
+                    </Button>
+                    <Button x:Name="btModify" ToolTip="编辑项" IsEnabled="False" Click="BtModify_Click" >
+                        <Image x:Name="imModify" Source="/Images/Modify.png" Stretch="Fill" Width="32" Grid.Column="0" Opacity="0.3"></Image>
+                    </Button>
+                    <Button x:Name="btSave" ToolTip="保存项" IsEnabled="False" Click="BtSave_Click" >
+                        <Image x:Name="imSave" Source="/Images/Save.png" Stretch="Fill" Width="32" Grid.Column="0" Opacity="0.3"></Image>
+                    </Button>
+                    <Button x:Name="btDelete" ToolTip="删除项" IsEnabled="False" Click="BtDelete_Click" >
+                        <Image x:Name="imDelete" Source="/Images/Delete.png" Stretch="Fill" Width="32" Grid.Column="0" Opacity="0.3"></Image>
+                    </Button>
+                    <Separator/>
+                    <Button x:Name="btExit" ToolTip="退出" Click="BtExit_Click" >
+                        <Image Source="/Images/Exit.png" Stretch="Fill" Width="32" Grid.Column="0"></Image>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+            <StatusBar DockPanel.Dock="Bottom" >
+                <Label x:Name="lbFileName" Content="" HorizontalAlignment="Left" Grid.Column="0"  VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StatusBar>
+            <DataGrid x:Name="dgItemData"  ItemsSource="{Binding}" CanUserAddRows="False"  AutoGenerateColumns="False" Grid.Row="1" Margin="0,5,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GridLinesVisibility="Horizontal" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="DgItemData_MouseDoubleClick" MouseRightButtonDown="DgItemData_MouseRightButtonDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="名称" Binding="{Binding Title}" MinWidth="60" Width="150"/>
+                    <DataGridTextColumn  Header="用户" Binding="{Binding UserName}" MinWidth="60" Width="200"/>
+                    <DataGridTextColumn  Header="密码" Binding="{Binding Password}" MinWidth="60" Width="100" Visibility="Hidden"/>
+                    <DataGridTextColumn  Header="网址" Binding="{Binding URL}" MinWidth="60" Width="200"/>
+                    <DataGridTextColumn  Header="说明" Binding="{Binding Notes}" MinWidth="60" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+    <Window.Resources>
+        <ContextMenu x:Key="contexMenu">
+            <MenuItem x:Name="miCopyUser" Header="复制用户" Click="MiCopyUser_Click" />
+            <MenuItem x:Name="miCopyPassword" Header="复制密码" Click="MiCopyPassword_Click" >
+                <MenuItem.Icon>
+                    <Image Source="/Images/Copy.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem x:Name="miCopyUrl" Header="复制网址" Click="MiCopyUrl_Click" />
+        </ContextMenu>
+    </Window.Resources>
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
+</adonisControls:AdonisWindow>
